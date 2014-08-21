@@ -7,6 +7,6 @@ This repo contains the results plots and corresponding R codes for the Explorato
 
 Contains:
 
-	* PNG files
-	* R Codes
+	* PNG files (plot?.png)
+	* R Codes (plot?.R)
 
