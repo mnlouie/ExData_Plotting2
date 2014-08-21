@@ -27,11 +27,11 @@ plot3 <- function(){
   require("ggplot2")
 
   g3 <- ggplot(emissionbytypeANDyear, aes(year, Emissions), color=type)
-  g3 + geom_point(aes(color=type), size=10, alpha=0.3) + facet_grid(.~ type) + geom_smooth(size =2, color="black", linetype = 1, method = "lm", se = FALSE) + scale_x_continuous(breaks = seq(1999, 2008, 3)) + labs(x="Years", y="Total PM2.5 Emission (tons)", title="Total PM2.5 Emissions in Baltimore (1999 - 2008)") + 
-  theme(axis.text = element_text(size = 8), axis.title = element_text(size = 14), 
+  g3 + geom_point(aes(color=type), size=3, alpha=1) + facet_grid(.~ type) + geom_smooth(size =1, color="black", linetype = 1, method = "lm", se = FALSE) + scale_x_continuous(breaks = seq(1999, 2008, 3)) + labs(x="Years", y="Total PM2.5 Emission (tons)", title="Total PM2.5 Emissions in Baltimore (1999 - 2008)") + 
+  theme(axis.text = element_text(size = 6), axis.title = element_text(size = 8), 
         panel.margin = unit(1, "lines"), plot.title = element_text(vjust = 2), 
-        legend.title = element_text(size = 11)) + scale_colour_discrete(name = "Type")
-  ggsave(file="plot3.png")
+        legend.title = element_text(size = 8)) + scale_colour_discrete(name = "Type")
+  ggsave(file="plot3.png",width=8, height=4, dpi=100)
 
 
 }

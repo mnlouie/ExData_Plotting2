@@ -18,16 +18,18 @@ plot6 <- function(x,y){
   
   
   data <- rbind(d.baltim <- NEI[which(NEI$fips == "24510"), ], d.lac <- NEI[which(NEI$fips == "06037"), ])
-  data$fips[which(data$fips == "24510")] <- "Baltimore City"
-  data$fips[which(data$fips == "06037")] <- "Los Angeles County"
+  data$fips[which(data$fips == "24510")] <- "Baltimore"
+  data$fips[which(data$fips == "06037")] <- "Los Angeles"
   names(data) [1] <- "Cities"
   names(data) [6] <- "Year"
   #plotting:
   require("ggplot2")
   
   g6 <- ggplot(data, aes(x=Year, y=Emissions, fill=Cities, color=Cities))
-  g6 + geom_bar(stat="identity", position = position_dodge()) + scale_x_continuous(breaks= seq(1999,2008,3)) +labs(y = expression("Motor Vehicle Related PM2.5 Emissions (tons)")) + labs(title=expression("Motor Vehicle Related PM2.5 Emissions in Baltimore & Los Angeles (1999 - 2008)"))
-  #g6 + scale_x_continuous(breaks= seq(1999,2008,3)) + theme_bw() + geom_point(size =4) + geom_line() + labs(y = expression("Motor Vehicle Related " * " Emissions (tons)")) + labs(x = "Year")
-  ggsave(file='plot6.png')
+  g6 + geom_bar(stat="identity", position = position_dodge()) + scale_x_continuous(breaks= seq(1999,2008,3)) +labs(y = expression("Motor Vehicle Related PM2.5 Emissions (tons)")) + labs(title=expression("Motor Vehicle Related PM2.5 Emissions (1999 - 2008)"))+
+  theme(axis.text = element_text(size = 8), axis.title = element_text(size = 8), 
+        panel.margin = unit(1, "lines"), plot.title = element_text(vjust = 2, size=8), 
+        legend.title = element_text(size = 8))
+  ggsave(file='plot6.png', width=4, height=4, dpi=100)
   
 }
